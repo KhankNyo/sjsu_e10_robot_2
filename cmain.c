@@ -27,7 +27,7 @@ static void find_red(int state)
 }
 
 
-static void turn_off_red(int state)
+static void turn_off_red(int state, int wait_time)
 {
     /* keep hitting the beacon until it turns off */
     do {
@@ -51,6 +51,25 @@ static void turn_off_red(int state)
     } while (STATE_TURN_OFF_RED == state);
 }
 
+
+static void bringing_home_the_beacon(void) {
+    do {
+        int pd_sum;
+
+        /* check if red is still on */
+        pd_sum = pd_read(s_expose_time_ms);
+        if (pd_sum < AMBIENT_LEVEL)
+        {
+            /* TODO: test this */
+            /* move about 1 ft back */
+            move(-SLOW_SPEED);
+            Wait(200);
+            move(0);        /* halt */
+            /* TODO: swing arm up */
+            break;
+        }
+    } while (STATE_CAPTURE_GREEN == state);
+}
 
 static void find_green(int state)
 {
