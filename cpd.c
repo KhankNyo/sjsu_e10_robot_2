@@ -24,7 +24,8 @@ static int expose_and_read(void)
 
 int pd_read(int expose_time_ms)
 {
-    int i, PD_sum = 0;
+    unsigned i;
+    int PD_sum = 0;
     SetDigitalOutput(SHUTTER_PORT, 1);  /* close it */
     SetDigitalOutput(COUNTER_PORT, 1);  /* counter reset */
     SetDigitalOutput(COUNTER_PORT, 0);  /* counter count */
@@ -49,7 +50,8 @@ int pd_read(int expose_time_ms)
 
 int pd_find_max(void)
 {
-    int i, largest = 0;
+    unsigned i;
+    int largest = 0;
     for (i = 0; i < STATIC_ARRAY_SIZE(g_PD); i++)
     {
         if (g_PD[i] > g_PD[largest])
@@ -87,3 +89,4 @@ void pd_move(int PD_sum, int PD_max_idx, int beacon_slow, int beacon_stop)
 
     turn(steer, speed);
 }
+

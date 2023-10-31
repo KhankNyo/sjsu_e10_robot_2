@@ -264,10 +264,20 @@ Discarded input sections
  .text._Z4turnii
                 0x00000000       0x44 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmove.o
  .text          0x00000000        0x0 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
- .data          0x00000000        0x0 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
+ .data          0x00000000        0x4 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
  .bss           0x00000000        0x0 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
+ .text._ZL8find_redi
+                0x00000000       0x7c C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
+ .text._ZL12turn_off_redi
+                0x00000000       0x54 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
+ .text._ZL10find_greeni
+                0x00000000       0x7c C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
+ .text._ZL13capture_greeni
+                0x00000000       0x24 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
+ .text._ZL7go_homei
+                0x00000000       0x70 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
  .text._Z10robot_mainv
-                0x00000000      0x198 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
+                0x00000000       0x58 C:\Users\016822845\AppData\Roaming\Intelitek\easyC V6\Cortex\Temp\cmain.o
  .text          0x00000000        0x0 C:\Program Files (x86)\Intelitek\easyC V6\Cortex\Tools\STM32F103VD\Startup\StartupInit.o
  .data          0x00000000        0x0 C:\Program Files (x86)\Intelitek\easyC V6\Cortex\Tools\STM32F103VD\Startup\StartupInit.o
  .bss           0x00000000        0x0 C:\Program Files (x86)\Intelitek\easyC V6\Cortex\Tools\STM32F103VD\Startup\StartupInit.o

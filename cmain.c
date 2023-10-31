@@ -1,12 +1,17 @@
+
+
 #include "UserInclude.h"
 #include "cpd.h"
 #include "cmove.h"
 
 
-static void find_red(int state);
+
+static int s_expose_time_ms = 3;
+
+static void find_red(int state)
 {
     do {
-        int pd_sum = pd_read(expose_time_ms);
+        int pd_sum = pd_read(s_expose_time_ms);
         int pd_max_idx = pd_find_max();
         int pd_max_val = g_PD[pd_max_idx];
         pd_move(pd_sum, pd_max_idx, 5000, NEVER_STOP);
@@ -22,9 +27,8 @@ static void find_red(int state);
 }
 
 
-static bool turn_off_red(int state, int wait_time)
+static void turn_off_red(int state)
 {
-    bool task_finished = false;
     /* keep hitting the beacon until it turns off */
     do {
         int pd_sum;
@@ -32,7 +36,7 @@ static bool turn_off_red(int state, int wait_time)
         /* TODO: swing arm down, hard */
 
         /* check if red is still on */
-        pd_sum = pd_read(expose_time_ms);
+        pd_sum = pd_read(s_expose_time_ms);
         if (pd_sum < AMBIENT_LEVEL)
         {
             /* TODO: test this */
@@ -40,43 +44,22 @@ static bool turn_off_red(int state, int wait_time)
             move(-SLOW_SPEED);
             Wait(200);
             move(0);        /* halt */
-            task_finished = true;
+
             /* TODO: swing arm up */
             break;
         }
     } while (STATE_TURN_OFF_RED == state);
-    return true;
 }
 
-static bool bringing_home_the_beacon(int distance){
-    do {
-        int pd_sum;
-
-        /* check if red is still on */
-        pd_sum = pd_read(expose_time_ms);
-        if (pd_sum < AMBIENT_LEVEL)
-        {
-            /* TODO: test this */
-            /* move about 1 ft back */
-            move(-SLOW_SPEED);
-            Wait(200);
-            move(0);        /* halt */
-            task_finished = true;
-            /* TODO: swing arm up */
-            break;
-        }
-    } while (STATE_CAPTURE_GREEN == state);
-    return task_finished;
-}
 
 static void find_green(int state)
 {
 
     do {
-        int pd_sum = pd_read(expose_time_ms);
+        int pd_sum = pd_read(s_expose_time_ms);
         int pd_max_idx = pd_find_max();
         int pd_max_val = g_PD[pd_max_idx];
-        pd_move(pd_max_val, pd_max_idx, 2000, NEVER_STOP);
+        pd_move(pd_sum, pd_max_idx, 2000, NEVER_STOP);
 
 
         if (0 == GetDigitalInput(LIMIT_SWITCH_PORT))
@@ -128,7 +111,7 @@ static void go_home(int state)
 
 void robot_main(void)
 {
-    int expose_time_ms = 3;
+    s_expose_time_ms = 3;
     int state = STATE_FIND_RED;
     find_red(state);
 
@@ -150,4 +133,5 @@ void robot_main(void)
     state = STATE_GO_HOME;
     go_home(state);
 }
+
 
