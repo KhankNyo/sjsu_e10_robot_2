@@ -134,7 +134,8 @@ void robot_main(void)
 
     state = STATE_TURN_OFF_RED;
     turn_off_red(state);
-
+   
+    #if 0
 
     /* TODO: test this */
     state = STATE_FIND_GREEN;
@@ -148,6 +149,8 @@ void robot_main(void)
     /* TODO: test this */
     state = STATE_GO_HOME;
     go_home(state);
+
+    #endif 
 }
 
 
