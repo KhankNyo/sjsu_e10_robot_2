@@ -22,9 +22,8 @@ static void find_red(int state);
 }
 
 
-static bool turn_off_red(int state, int wait_time)
+static void turn_off_red(int state, int wait_time)
 {
-    bool task_finished = false;
     /* keep hitting the beacon until it turns off */
     do {
         int pd_sum;
@@ -40,15 +39,13 @@ static bool turn_off_red(int state, int wait_time)
             move(-SLOW_SPEED);
             Wait(200);
             move(0);        /* halt */
-            task_finished = true;
             /* TODO: swing arm up */
             break;
         }
     } while (STATE_TURN_OFF_RED == state);
-    return true;
 }
 
-static bool bringing_home_the_beacon(int distance){
+static void bringing_home_the_beacon(int distance){
     do {
         int pd_sum;
 
@@ -61,12 +58,10 @@ static bool bringing_home_the_beacon(int distance){
             move(-SLOW_SPEED);
             Wait(200);
             move(0);        /* halt */
-            task_finished = true;
             /* TODO: swing arm up */
             break;
         }
     } while (STATE_CAPTURE_GREEN == state);
-    return task_finished;
 }
 
 static void find_green(int state)
