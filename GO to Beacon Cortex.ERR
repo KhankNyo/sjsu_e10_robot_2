@@ -1,0 +1,7 @@
+cmain.c: In function 'void robot_main()':
+cmain.c line# 18:13: warning: unused variable 'pd_max_val'
+cmain.c line# 59:13: warning: unused variable 'pd_sum'
+cpd.c: In function 'int pd_read(int)':
+cpd.c line# 38:21: warning: comparison between signed and unsigned integer expressions
+cpd.c: In function 'int pd_find_max()':
+cpd.c line# 53:21: warning: comparison between signed and unsigned integer expressions
