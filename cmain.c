@@ -27,44 +27,45 @@ static void find_red(int state)
 }
 
 
-static void turn_off_red(int state, int wait_time)
+static void turn_off_red(int state, int wait_time_ms)
 {
-    /* keep hitting the beacon until it turns off */
+#define ARM_UP 0
+#define ARM_DOWN 127
+    /* make sure arm is up */
+    SetServo(ARM_SERVO_PORT, ARM_UP);
+    Wait(wait_time_ms);
+
     do {
         int pd_sum;
-        // bring arm down (press button)
-        SetServo(1,127); 
-        Wait(wait_time);
-        /* TODO: swing arm up */
-        /* TODO: swing arm down, hard */
+        /* try to press the button on the red beacon */
+        SetServo(ARM_SERVO_PORT, ARM_DOWN); 
+        Wait(wait_time_ms);
 
-        /* check if red is still on */
+        /* move arm up */
+        SetServo(ARM_SERVO_PORT, ARM_UP); 
+        Wait(wait_time_ms);
+
+        /* is the red beacon off? */
         pd_sum = pd_read(s_expose_time_ms);
         if (pd_sum < AMBIENT_LEVEL)
         {
-            /* TODO: test this */
             /* move about 1 ft back */
             move(-SLOW_SPEED);
             Wait(200);
+
             move(0);        /* halt */
-            //bring arm down
-            /* TODO: swing arm up */
             break;
         }
-        // bring arm up
-        SetServo(1, 0); 
-        Wait(wait_time);
     } while (STATE_TURN_OFF_RED == state);
-    //bring arm up
-    SetServo(1, 0); 
-    Wait(wait_time);
+#undef ARM_UP
+#undef ARM_DOWN
 }
 
 
 static void bringing_home_the_beacon(void) {
     do {
-    //bring arm max down (capture beacon)
-       SetServo(1,127);
+        // bring arm max down (capture beacon)
+        SetServo(1,127);
     } while (STATE_CAPTURE_GREEN == state);
 }
 
@@ -133,7 +134,7 @@ void robot_main(void)
 
 
     state = STATE_TURN_OFF_RED;
-    turn_off_red(state);
+    turn_off_red(state, 1000);
    
     #if 0
 
