@@ -10,7 +10,7 @@ static int s_expose_time_ms = 3;
 
 static void find_red(int state)
 {
-    /* TODO: check the move function in cmove.c, cpd.c 
+    /* TODO(khanh): check the move function in cmove.c, cpd.c 
      * because Robot went in a straight line instead of spinning 
      * while testing with the faulty controller
      */
@@ -61,7 +61,7 @@ static void turn_off_red(int state, int wait_time_ms)
 
 
 static void bringing_home_the_beacon(void) {
-    /* TODO: possible merge conflict with the code in EasyC */
+    /* TODO(khanh): possible merge conflict with the code in EasyC */
     do {
         // bring arm max down (capture beacon)
         SetServo(1,127);
@@ -105,7 +105,7 @@ static void go_home(int state)
         /* is wall too close? */
         if (dist < MIN_DIST_TO_WALL)
         {
-            /* TODO: test this, make sure it's close to a 90 degrees rotation */
+            /* TODO(khanh): test this, make sure it's close to a 90 degrees rotation */
             /* halt and turn 90 degrees */
             move(0);                    /* halt */
             turn(0, FAST_SPIN_SPEED);   /* turn */
@@ -134,7 +134,7 @@ void robot_main(void)
    
 #if 0
 
-    /* TODO: test this */
+    /* TODO(khanh): test this */
     state = STATE_FIND_GREEN;
     find_green(state);
 
@@ -143,7 +143,7 @@ void robot_main(void)
     capture_green(state, 1000);
 
 
-    /* TODO: test this */
+    /* TODO(khanh): test this */
     state = STATE_GO_HOME;
     go_home(state);
 
