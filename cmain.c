@@ -20,7 +20,7 @@ static void find_red(int state)
         pd_move(pd_sum, pd_max_idx, 5000, NEVER_STOP);
 
 
-        /* beacon is hit */
+        /* did we touch the red beacon? */
         if (0 == GetDigitalInput(LIMIT_SWITCH_PORT))
         {
             move(0); /* halt */
@@ -76,6 +76,7 @@ static void find_green(int state)
         pd_move(pd_sum, pd_max_idx, 2000, NEVER_STOP);
 
 
+        /* did we touch the green beacon? */
         if (0 == GetDigitalInput(LIMIT_SWITCH_PORT))
         {
             move(0); /* halt */
@@ -105,7 +106,7 @@ static void go_home(int state)
         /* is wall too close? */
         if (dist < MIN_DIST_TO_WALL)
         {
-            /* TODO(khanh): test this, make sure it's close to a 90 degrees rotation */
+            /* TODO(khanh): test this, make sure it's close to a 90 degree rotation */
             /* halt and turn 90 degrees */
             move(0);                    /* halt */
             turn(0, FAST_SPIN_SPEED);   /* turn */
