@@ -30,7 +30,10 @@
 
 
 /* ports */
+#define ARM_SERVO_PORT 2
+
 #define LIMIT_SWITCH_PORT 5
+
 #define MOTOR_LEFT_PORT 1
 #define MOTOR_RIGHT_PORT 10
 
