@@ -19,14 +19,19 @@
 
 
 /* speed and handling */
-#define FORWARD_SPEED 35
-#define SPIN_SPEED 40
-#define FAST_SPIN_SPEED 80
-#define SLOW_SPEED 25
+#define FORWARD_SPEED 40
+#define SPIN_SPEED 20
+#define FAST_SPIN_SPEED 50
+#define SLOW_SPEED 20
 #define STEER_SENSITIVITY 20
 
 #define MOTOR_MAX_SPEED 127
 #define MOTOR_MIN_SPEED -128
+
+
+/* arm */
+#define ARM_UP 0
+#define ARM_DOWN 127
 
 
 /* ports */
