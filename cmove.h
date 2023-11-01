@@ -5,13 +5,12 @@
 /* move the robot in one direction according to the speed given */
 void move(int speed);
 
-/* @param steer: determines how much to steer to robot, 
- *  0 means spinning on a dime
- *  < 0 means steering to the left
- *  > 0 means steering to the right
- * @param speed: determines how quickly it steers when steer != 0,
- *  when steer == 0, a positive speed means rotate to the right, and vice versa 
- */
+/* 
+    Steer: >  0 means turn right,
+           <  0 means turn left,
+           == 0 means going straight, no steering
+    speed: determines the speed at which to robot steers
+*/
 void turn(int speed, int steer);
 
 
