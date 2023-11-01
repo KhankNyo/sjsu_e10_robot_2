@@ -10,10 +10,12 @@ static int s_expose_time_ms = 3;
 
 static void find_red(int state)
 {
+    /* TODO: check the move fn because in cmove.c, cpd.c
+     *  Robot went in a straight line instead of spinning with the faulty controller
+     */
     do {
         int pd_sum = pd_read(s_expose_time_ms);
         int pd_max_idx = pd_find_max();
-        int pd_max_val = g_PD[pd_max_idx];
         pd_move(pd_sum, pd_max_idx, 5000, NEVER_STOP);
 
 
@@ -36,8 +38,7 @@ static void turn_off_red(int state, int wait_time_ms)
     Wait(wait_time_ms);
 
     do {
-        int pd_sum;
-        /* try to press the button on the red beacon */
+        /* try to turn off the red beacon */
         SetServo(ARM_SERVO_PORT, ARM_DOWN); 
         Wait(wait_time_ms);
 
@@ -46,14 +47,14 @@ static void turn_off_red(int state, int wait_time_ms)
         Wait(wait_time_ms);
 
         /* is the red beacon off? */
-        pd_sum = pd_read(s_expose_time_ms);
-        if (pd_sum < AMBIENT_LEVEL)
+        if (pd_read(s_expose_time_ms) < AMBIENT_LEVEL)
         {
             /* move about 1 ft back */
             move(-SLOW_SPEED);
             Wait(200);
 
-            move(0);        /* halt */
+            /* halt */
+            move(0);
             break;
         }
     } while (STATE_TURN_OFF_RED == state);
@@ -63,6 +64,7 @@ static void turn_off_red(int state, int wait_time_ms)
 
 
 static void bringing_home_the_beacon(void) {
+    /* TODO: possible merge conflict with the code in EasyC */
     do {
         // bring arm max down (capture beacon)
         SetServo(1,127);
@@ -75,7 +77,6 @@ static void find_green(int state)
     do {
         int pd_sum = pd_read(s_expose_time_ms);
         int pd_max_idx = pd_find_max();
-        int pd_max_val = g_PD[pd_max_idx];
         pd_move(pd_sum, pd_max_idx, 2000, NEVER_STOP);
 
 
