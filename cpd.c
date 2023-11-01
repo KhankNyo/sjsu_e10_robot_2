@@ -53,7 +53,7 @@ int pd_find_max(void)
 {
     unsigned i;
     int largest = 0;
-    for (i = 0; i < STATIC_ARRAY_SIZE(g_PD); i++)
+    for (i = 1; i < STATIC_ARRAY_SIZE(g_PD); i++)
     {
         if (g_PD[i] > g_PD[largest])
             largest = i;
