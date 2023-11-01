@@ -1,3 +1,14 @@
 
 
-*.dat
+
+
+# Build Artifacts
+*.HEX
+*.ERR
+
+# should Ctrl.dat be ignored?
+
+
+# Computer-specific files
+flash_usb.bat
+
