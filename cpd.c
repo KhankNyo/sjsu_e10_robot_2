@@ -8,6 +8,7 @@
 
 int g_PD[8] = { 0 };
 
+/* TODO: check this with the Goto Beacon code and test this */
 static int expose_and_read(void)
 {
     int intensity;
@@ -72,6 +73,7 @@ void pd_move(int PD_sum, int PD_max_idx, int beacon_slow, int beacon_stop)
     /* start searching for the beacon */
     if (PD_sum < AMBIENT_LEVEL)
     {
+        /* spinning on a dime */
         speed = 0;
         steer = -SPIN_SPEED;
     }
@@ -87,6 +89,6 @@ void pd_move(int PD_sum, int PD_max_idx, int beacon_slow, int beacon_stop)
         steer = 0;
     }
 
-    turn(steer, speed);
+    turn(speed, steer);
 }
 

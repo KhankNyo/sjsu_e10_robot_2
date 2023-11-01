@@ -12,7 +12,7 @@ void move(int speed);
  * @param speed: determines how quickly it steers when steer != 0,
  *  when steer == 0, a positive speed means rotate to the right, and vice versa 
  */
-void turn(int steer, int speed);
+void turn(int speed, int steer);
 
 
 #endif /* ROBOT_MOVE_H */
