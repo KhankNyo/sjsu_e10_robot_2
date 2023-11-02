@@ -152,6 +152,9 @@ void robot_main(void)
     go_home(state);
 
 #endif 
+
+    /* it's good practice to have a spin loop for embedded systems */
+    while (1) {}
 }
 
 
