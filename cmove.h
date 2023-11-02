@@ -6,8 +6,8 @@
 void move(int speed);
 
 /* 
-    Steer: >  0 means turn right,
-           <  0 means turn left,
+    Steer: <  0 means turn right,
+           >  0 means turn left,
            == 0 means going straight, no steering
     speed: determines the speed at which to robot steers
 */
