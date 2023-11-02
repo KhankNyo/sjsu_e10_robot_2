@@ -18,7 +18,8 @@ static void find_red(int state)
     do {
         int pd_sum = pd_read(s_expose_time_ms);
         int pd_max_idx = pd_find_max();
-        pd_move(pd_sum, pd_max_idx, 5000, NEVER_STOP);
+        /* halt robot if PD_sum > 6k */
+        pd_move(pd_sum, pd_max_idx, 5000, 6000); 
 
 
         /* did we touch the red beacon? */
