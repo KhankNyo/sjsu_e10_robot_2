@@ -14,8 +14,11 @@
 /* misc */
 #define AMBIENT_LEVEL 200
 #define PD_MIDDLE 4
+#define PD_GREEN_BEACON_MODE 0
+#define PD_RED_BEACON_MODE 1
 #define NEVER_STOP (((unsigned)1 << (sizeof(int)*8 - 1)) - 1) /* int_max */
 #define MIN_DIST_TO_WALL 4
+
 
 
 /* speed and handling */
@@ -47,6 +50,8 @@
 
 #define ULTRASONIC_INPUT_PORT 1     /* on the sensor, this would be its output port */
 #define ULTRASONIC_OUTPUT_PORT 7    /* on the sensor, this would be the input port */
+
+#define PD_MODE_PORT 10
 
 
 

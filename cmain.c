@@ -14,6 +14,7 @@ static void find_red(int state)
      * because Robot went in a straight line instead of spinning 
      * while testing with the faulty controller
      */
+    SetDigitalOutput(PD_MODE_PORT, PD_RED_BEACON_MODE);
     do {
         int pd_sum = pd_read(s_expose_time_ms);
         int pd_max_idx = pd_find_max();
@@ -70,10 +71,11 @@ static void bringing_home_the_beacon(void) {
 
 static void find_green(int state)
 {
+    SetDigitalOutput(PD_MODE_PORT, PD_GREEN_BEACON_MODE);
     do {
         int pd_sum = pd_read(s_expose_time_ms);
         int pd_max_idx = pd_find_max();
-        pd_move(pd_sum, pd_max_idx, 2000, NEVER_STOP);
+        pd_move(pd_sum, pd_max_idx, 5000, NEVER_STOP);
 
 
         /* did we touch the green beacon? */
